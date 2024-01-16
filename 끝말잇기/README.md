@@ -7,7 +7,7 @@ HTML에서 자바스크립트 외부 파일을 불러오기 위한 방법은 여
 
 그 중 head태그에서 자바스크립트를 불러오는 방법을 선택했다.
 
-자바스크립트를 통해서 DOM을 조작하고 싶다면 DOM콘텐츠가 모드 load되고 나서 querySelctor를 통해 DOM콘텐츠를 선택 해야 한다. head태그는 일반적으로 dom 컨텐츠가 load되기 이전에 실행 되기 때문에 `defer` 를 사용하면 된다 .
+자바스크립트를 통해서 DOM을 조작하고 싶다면 DOM콘텐츠가 모두 load되고 나서 querySelctor를 통해 DOM콘텐츠를 선택 해야 한다. head태그는 일반적으로 dom 컨텐츠가 load되기 이전에 실행 되기 때문에 `defer` 를 사용하면 된다 .
 
 `<script type="text/javascript" src="word-relay.js" defer></script>`
 
