@@ -59,6 +59,15 @@ $form.addEventListener('submit', (e) => {
       }
     }
   }
+  answer.forEach((element,i)=>{
+    const index = value.indexOf(element);
+    if(index > -1 && index === i){
+      strike+=1
+    }
+    else if(index>-1){
+      ball+=1;
+    }
+  })
   if (strike === 0 && ball === 0 ){
     out+=1
     if(out === 3){
