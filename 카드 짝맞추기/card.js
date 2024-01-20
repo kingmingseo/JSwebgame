@@ -1,12 +1,15 @@
 const $wrapper = document.querySelector('#wrapper');
 
-const total = 12;
-const colors = ['red', 'orange', 'yellow', 'green', 'white', 'pink']
-let colorCopy = colors.concat(colors);
+const total = Number(prompt('카드 개수를 짝수로 입력하세요(최대 20)'));
+const colors = ['red', 'orange', 'yellow', 'green', 'white', 'pink','aqua','black','blue','cyan']
+let colorSlice = colors.slice(0,total/2)
+let colorCopy = colorSlice.concat(colorSlice);
 let shuffled = [];
 let clicked = []
 let completed = []
 let clickable = false;
+let startTime;
+let endTime;
 
 function shuffle() {
   for (let i = 0; colorCopy.length > 0; i += 1) {
@@ -34,7 +37,7 @@ function createCard(i) { //div.card  > div.card-inner > (div.card-front + div.ca
 }
 
 function onClickCard() {
-  if(!clickable || completed.includes(this) || clicked[0] === this){
+  if (!clickable || completed.includes(this) || clicked[0] === this) {
     return
   }
   this.classList.toggle('flipped');
@@ -42,31 +45,33 @@ function onClickCard() {
   if (clicked.length !== 2) {
     return
   }
+  clickable = false
   const firstBackColor = clicked[0].querySelector('.card-back').style.backgroundColor
   const secondBackColor = clicked[1].querySelector('.card-back').style.backgroundColor
   if (firstBackColor === secondBackColor) {
     completed.push(clicked[0])
     completed.push(clicked[1])
-    clicked = []
-    if (completed.length !== total) {
-      return;
+    if (completed.length == total) {
+      endTime = new Date();
+      setTimeout(() => {
+        alert(`축하합니다! 소요시간${(endTime-startTime)/1000}`);
+        resetGame()
+      }, 1000)
     }
-    setTimeout(() => {
-      alert('축하합니다');
-      resetGame()
-    }, 1000)
+    clicked=[];
+    clickable = true;
     return;
-
   }
   setTimeout(() => {
+    clickable = true
     clicked[0].classList.remove('flipped');
     clicked[1].classList.remove('flipped');
     clicked = []
   }, 1500)
 
 }
-
 function startGame() {
+  startTime = new Date;
   clickable = false;
   shuffle();
   for (let i = 0; i < total; i++) {
@@ -86,8 +91,8 @@ function startGame() {
       card.classList.remove('flipped');
     });
     clickable = true;
-    }, 5000)
-  
+  }, 5000)
+
 }
 
 function resetGame() {
