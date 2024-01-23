@@ -44,13 +44,15 @@ this.classList.toggle('flipped');
 
 ### 이벤트 루프와 호출스택
 
-![image]([https://github.com/kingmingseo/JSwebgame/assets/101965138/ebcb6f2c-6d4b-48fb-8611-e09ec181f89e](https://github.com/kingmingseo/JSwebgame/assets/101965138/ebcb6f2c-6d4b-48fb-8611-e09ec181f89e))
+![image](https://github.com/kingmingseo/JSwebgame/assets/101965138/ebcb6f2c-6d4b-48fb-8611-e09ec181f89e)
 
 함수는 호출 스택에 하나씩 쌓이며, 호출스택에서 실행된다. 타이머나 이벤트리스너들은 백그라운드에 들어가고 태스크큐에는 타이머나 이벤트리스너들의 콜백함수들이 들어간다. 이벤트 루프는 호출스택이 비어있을 때 태스크 큐에 있는 작업을 호출스택으로 옮겨 실행한
 
 `console.trace();` 를 통해 호출 스택에 쌓여있는 순서를 볼 수 있다.
 
 스택과 같이 쌓일 때는 아래부터 쌓이며 실행은 위에서부터 실행된다.
+
+<참고> https://www.jsv9000.app/ 사이트를 통해서 호출스택, 태스크큐, 마이크로 태스크큐, 이벤트 루프를 시각적으로 확인하는데 도움을 주는 사이트,
 
 ### 이벤트루프 분석을 통해 버그 수정
 
